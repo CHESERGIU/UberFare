@@ -14,8 +14,17 @@ namespace UberFare
 
         public static decimal CalculateUberFare(int distanceInKm, int hour)
         {
-            decimal pricePerKm = IsMediumDistance(distanceInKm) ? 8 : 5;
+            decimal pricePerKm = 5;
+            if (IsLongDistance(distanceInKm))
+                pricePerKm = 6;
+            else if (IsMediumDistance(distanceInKm))
+                pricePerKm = 8;
             return distanceInKm * pricePerKm;
+        }
+
+        private static bool IsLongDistance(int distanceInKm)
+        {
+            return distanceInKm > 60;
         }
 
         private static bool IsMediumDistance(int distanceInKm)
