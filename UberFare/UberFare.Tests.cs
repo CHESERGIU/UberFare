@@ -8,8 +8,8 @@ namespace UberFare
         [Fact]
         public void DayTimeFareForShortDistances()
         {
-            int distanceInKm = 0;
-            int hour = 0;
+            int distanceInKm = 1;
+            int hour = 8;
             Assert.Equal(5, Program.CalculateUberFare(distanceInKm, hour));
         }
     }

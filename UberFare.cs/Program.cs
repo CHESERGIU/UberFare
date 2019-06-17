@@ -6,15 +6,15 @@ namespace UberFare
     {
         public static void Main(string[] args)
         {
-            int distanceInKm = 0;
-            int hour = 0;
+            int distanceInKm = 1;
+            int hour = 8;
             Console.WriteLine(CalculateUberFare(distanceInKm, hour));
             Console.ReadLine();
         }
 
         public static decimal CalculateUberFare(int distanceInKm, int hour)
         {
-            return 0;
+            return distanceInKm*5;
         }
     }
 }
