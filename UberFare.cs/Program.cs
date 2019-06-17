@@ -15,8 +15,15 @@ namespace UberFare
         public static decimal CalculateUberFare(int distanceInKm, int hour)
         {
             decimal[] daytimePrices = { 5, 8, 6 };
-            decimal pricePerKm = GetPricePerKm(distanceInKm, daytimePrices);
+            decimal[] nighttimePrices = { 7 };
+            decimal[] prices = IsDayTime(hour) ? daytimePrices : nighttimePrices;
+            decimal pricePerKm = GetPricePerKm(distanceInKm, prices);
             return distanceInKm * pricePerKm;
+        }
+
+        private static bool IsDayTime(int hour)
+        {
+            return 8 <= hour && hour < 21;
         }
 
         private static decimal GetPricePerKm(int distanceInKm, decimal[] prices)
