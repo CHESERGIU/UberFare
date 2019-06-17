@@ -10,7 +10,16 @@ namespace UberFare
         {
             int distanceInKm = 1;
             int hour = 8;
-            Assert.Equal(5, Program.CalculateUberFare(distanceInKm, hour));
+            int result = 5;
+            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
+        }
+        [Fact]
+        public void DayTimeFareForMediumDistances()
+        {
+            int distanceInKm = 21;
+            int hour = 8;
+            int result = 168;
+            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
         }
     }
 }
