@@ -13,12 +13,9 @@
             this.hour = hour;
         }
 
-        public decimal CalculateUberFare(Price price)
-        {
-            return distanceInKm * GetPricePerKm(price);
-        }
+        public decimal CalculateUberFare(Price price) => distanceInKm * GetPricePerKm(price);
 
-        private decimal GetPricePerKm(Price price)
+        public decimal GetPricePerKm(Price price)
         {
             if (IsLongDistance(distanceInKm))
                 return GetPrices(hour)[2];

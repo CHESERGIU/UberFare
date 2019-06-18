@@ -48,5 +48,12 @@ namespace UberFare
             int result = 800;
             Assert.Equal(result, price.CalculateUberFare(price));
         }
+        [Fact]
+        public void CheckNightTimeFareForLongDistances()
+        {
+            var price = new Price(100, 21);
+            int result = 8;
+            Assert.Equal(result, price.GetPricePerKm(price));
+        }
     }
 }
