@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberFareTests", "UberFare\UberFareTests.csproj", "{6F37BB3A-E39E-4174-AEE9-204ED1A40CCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiFareTests", "UberFare\TaxiFareTests.csproj", "{6F37BB3A-E39E-4174-AEE9-204ED1A40CCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberFare", "UberFare.cs\UberFare.csproj", "{E211B32A-1D48-45B3-AF7B-C3EA1E2822DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiFare", "UberFare.cs\TaxiFare.csproj", "{E211B32A-1D48-45B3-AF7B-C3EA1E2822DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

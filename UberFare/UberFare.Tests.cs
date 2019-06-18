@@ -1,125 +1,126 @@
+using TaxiFare;
 using Xunit;
 
-namespace UberFare
+namespace TaxiFareTests
 {
-    public class UberFareTests
+    public class TaxiFareTests
     {
         [Fact]
         public void DayTimeFareForShortDistances()
         {
-            Client passenger = new Client("Ion", 1);
+            var passenger = new Client("Ion", 1);
             var price = new Ride(1, 8, passenger);
-            int result = 5;
-            var actual = price.CalculateUberFare();
+            const int result = 5;
+            var actual = price.CalculateFare();
 
             Assert.Equal(result, actual);
         }
         [Fact]
         public void DayTimeFareForMediumDistances()
         {
-            Client passenger = new Client("Ion", 1);
+            var passenger = new Client("Ion", 1);
             var price = new Ride(21, 8, passenger);
-            int result = 168;
-            Assert.Equal(result, price.CalculateUberFare());
+            const int result = 168;
+            Assert.Equal(result, price.CalculateFare());
         }
         [Fact]
         public void DayTimeFareForLongDistances()
         {
-            Client passenger = new Client("Ion", 1);
+            var passenger = new Client("Ion", 1);
             var price = new Ride(100, 8, passenger);
-            int result = 600;
-            Assert.Equal(result, price.CalculateUberFare());
+            const int result = 600;
+            Assert.Equal(result, price.CalculateFare());
         }
         [Fact]
         public void NightTimeFareForShortDistances()
         {
-            Client passenger = new Client("Ion", 1);
+            var passenger = new Client("Ion", 1);
             var price = new Ride(1, 21, passenger);
-            int result = 7;
-            Assert.Equal(result, price.CalculateUberFare());
+            const int result = 7;
+            Assert.Equal(result, price.CalculateFare());
         }
         [Fact]
         public void NightTimeFareForMediumDistances()
         {
-            Client passenger = new Client("Ion", 1);
+            var passenger = new Client("Ion", 1);
             var price = new Ride(21, 21, passenger);
-            int result = 210;
-            Assert.Equal(result, price.CalculateUberFare());
+            const int result = 210;
+            Assert.Equal(result, price.CalculateFare());
         }
         [Fact]
         public void NightTimeFareForLongDistances()
         {
-            Client passenger = new Client("Ion", 1);
+            var passenger = new Client("Ion", 1);
             var price = new Ride(100, 21, passenger);
-            int result = 800;
-            Assert.Equal(result, price.CalculateUberFare());
+            const int result = 800;
+            Assert.Equal(result, price.CalculateFare());
         }
         [Fact]
         public void CheckNightTimeFareForLongDistances()
         {
-            Client passenger = new Client("Ion", 1);
+            var passenger = new Client("Ion", 1);
             var price = new Ride(100, 21, passenger);
-            int result = 8;
+            const int result = 8;
             Assert.Equal(result, price.GetPricePerKm());
         }
         [Fact]
         public void SplitBillForNightTimeFareForLongDistances()
         {
-            Client passenger = new Client("Ion", 2);
+            var passenger = new Client("Ion", 2);
             var price = new Ride(100, 21, passenger);
-            decimal result = 400;
+            const decimal result = 400;
             Assert.Equal(result, price.GetPricePerPerson());
         }
         [Fact]
         public void RewardPriceToFidelRiders_ForNightTimeFareForLongDistances()
         {
-            Client passenger = new Client("Ion", 15);
+            var passenger = new Client("Ion", 15);
             var price = new Ride(100, 21, passenger);
-            decimal rewardPrice = (decimal)5.6;
+            const decimal rewardPrice = (decimal)5.6;
             Assert.Equal(rewardPrice, price.GetRewardPricePerKm());
-            decimal result = 560;
-            Assert.Equal(result, price.CalculateUberFare());
+            const decimal result = 560;
+            Assert.Equal(result, price.CalculateFare());
         }
         [Fact]
         public void RewardPriceToFidelRiders_ForDayTimeFareForShortDistances()
         {
-            Client passenger = new Client("Ion", 15);
+            var passenger = new Client("Ion", 15);
             var price = new Ride(1, 8, passenger);
-            decimal rewardPrice = (decimal)4.2;
+            const decimal rewardPrice = (decimal)4.2;
             Assert.Equal(rewardPrice, price.GetRewardPricePerKm());
-            decimal result = (decimal)4.2;
-            Assert.Equal(result, price.CalculateUberFare());
+            const decimal result = (decimal)4.2;
+            Assert.Equal(result, price.CalculateFare());
         }
         [Fact]
         public void SplitBill_RewardPriceToFidelRiders_ForDayTimeFareForShortDistances()
         {
-            Client Ion = new Client("Ion", 15);
-            Client Maria = new Client("Maria", 12);
-            Client[] passenger = new Client[] { Ion, Maria };
+            var Ion = new Client("Ion", 15);
+            var Maria = new Client("Maria", 12);
+            var passenger = new[] { Ion, Maria };
 
-            Ride price = new Ride(10, 8, passenger);
-            decimal pricePerKm = 5;
+            var price = new Ride(10, 8, passenger);
+            const decimal pricePerKm = 5;
             Assert.Equal(pricePerKm, price.GetPricePerKm());
-            decimal rewardPrice = (decimal)4.2;
+            const decimal rewardPrice = (decimal)4.2;
             Assert.Equal(rewardPrice, price.GetRewardPricePerKm());
-            decimal result = (decimal)42;
-            Assert.Equal(result, price.CalculateUberFare());
+            const decimal result = 42;
+            Assert.Equal(result, price.CalculateFare());
 
         }
         [Fact]
-        public void Chage_SplitBill_RewardPriceToFidelRiders_ForDayTimeFareForShortDistances()
+        public void Change_SplitBill_RewardPriceToFidelRiders_ForDayTimeFareForShortDistances()
         {
-            Client Ion = new Client("Ion", 15);
-            Client Maria = new Client("Maria", 12);
-            Client[] passenger = new Client[] { Ion, Maria };
+            var Ion = new Client("Ion", 15);
+            var Maria = new Client("Maria", 12);
+            var passenger = new[] { Ion, Maria };
 
             var price = new Ride(10, 8, passenger);
-            decimal splitBill = 21;
+            const decimal splitBill = 21;
             Assert.Equal(splitBill, price.GetPricePerPerson());
-            decimal rewardPrice = (decimal)4.2;
+            const decimal rewardPrice = (decimal)4.2;
             Assert.Equal(rewardPrice, price.GetRewardPricePerKm());
-            decimal result = (decimal)42;
-            Assert.Equal(result, price.CalculateUberFare());
+            const decimal result = 42;
+            Assert.Equal(result, price.CalculateFare());
         }
     }
 }

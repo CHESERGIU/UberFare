@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UberFare
+namespace TaxiFare
 {
     public class Client
     {
@@ -13,18 +13,8 @@ namespace UberFare
             this.Travels = Travels;
         }
 
-        public static Client[] GetClients(string Name, int Travels = 0)
-        {
-            return GetClients(Name, Travels);
-        }
-
         public static bool Fidelity20(int Travels) => Travels >= 20 ? true : false;
 
         public static bool Fidelity10(int Travels) => Travels >= 10 && Travels < 20 ? true : false;
-
-        internal static decimal GetLength(Client[] passenger)
-        {
-            return passenger.Length;
-        }
     }
 }
