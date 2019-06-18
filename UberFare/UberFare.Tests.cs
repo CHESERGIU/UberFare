@@ -1,4 +1,3 @@
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Xunit;
 
 namespace UberFare
@@ -8,50 +7,46 @@ namespace UberFare
         [Fact]
         public void DayTimeFareForShortDistances()
         {
-            int distanceInKm = 1;
-            int hour = 8;
-            int result = 5;
-            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
+            var price = new Price(1, 8);
+            int result = 5;            
+            var actual = price.CalculateUberFare(price);
+
+            Assert.Equal(result, actual);
         }
         [Fact]
         public void DayTimeFareForMediumDistances()
         {
-            int distanceInKm = 21;
-            int hour = 8;
+            var price = new Price(21, 8);
             int result = 168;
-            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, price.CalculateUberFare(price));
         }
         [Fact]
         public void DayTimeFareForLongDistances()
         {
-            int distanceInKm = 100;
-            int hour = 8;
+            var price = new Price(100, 8);
             int result = 600;
-            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, price.CalculateUberFare(price));
         }
         [Fact]
         public void NightTimeFareForShortDistances()
         {
-            int distanceInKm = 1;
-            int hour = 21;
+            var price = new Price(1, 21);
             int result = 7;
-            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, price.CalculateUberFare(price));
         }
         [Fact]
         public void NightTimeFareForMediumDistances()
         {
-            int distanceInKm = 21;
-            int hour = 21;
+            var price = new Price(21, 21);
             int result = 210;
-            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, price.CalculateUberFare(price));
         }
         [Fact]
         public void NightTimeFareForLongDistances()
         {
-            int distanceInKm = 100;
-            int hour = 21;
+            var price = new Price(100, 21);
             int result = 800;
-            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, price.CalculateUberFare(price));
         }
     }
 }
