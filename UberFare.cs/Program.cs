@@ -6,7 +6,6 @@ namespace UberFare
     {
         public static void Main(string[] args)
         {
-
-        }        
+        }
     }
 }
