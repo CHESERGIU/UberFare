@@ -4,23 +4,24 @@
     {
         private readonly int distanceInKm;
         private readonly int hour;
+        private readonly Clients passenger;
         private readonly decimal[] daytimePrices = { 5, 8, 6 };
-        private readonly decimal[] nighttimePrices = { 7, 10, 8 };
-        private readonly int riders;
-        private readonly int travels = 0;
-        
-        public Price(int distanceInKm, int hour, int riders, int travels)
+        private readonly decimal[] nighttimePrices = { 7, 10, 8 };   
+
+        public Price(int distanceInKm, int hour, Clients passenger)
         {
             this.distanceInKm = distanceInKm;
             this.hour = hour;
-            this.riders = riders;
-            this.travels = travels;
+            this.passenger = passenger;
         }
 
         public decimal CalculateUberFare()
         {
-            if(travels > 10)
+            if(passenger.Travels > 10)
+            {
                 return distanceInKm * GetRewardPricePerKm();
+            }
+
             return distanceInKm * GetPricePerKm();
         }
 
@@ -41,19 +42,17 @@
 
         private bool IsMediumDistance(int distanceInKm) => distanceInKm > 20;
 
-        public decimal GetPricePerPerson() => CalculateUberFare() / riders;
+        public decimal GetPricePerPerson() => CalculateUberFare() / passenger.Riders;
 
         public decimal GetRewardPricePerKm()
         {            
-            if (Fidelity10(travels))
+            if (Clients.Fidelity10(passenger.Travels))
                 return GetPrices(hour)[2]*(decimal)0.7;
-            else if (Fidelity20(travels))
+            else if (Clients.Fidelity20(passenger.Travels))
                 return GetPrices(hour)[1] * (decimal)0.5;
             return GetPrices(hour)[0];
         }
 
-        private bool Fidelity20(int Travels) => Travels >= 20 ? true : false;
-
-        private bool Fidelity10(int Travels) => Travels >= 10 && Travels < 20 ? true : false;
+        
     }
 }
