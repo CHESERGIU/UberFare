@@ -15,25 +15,21 @@
 
         public decimal CalculateUberFare(Price price)
         {
-            return distanceInKm * GetPricePerKm(distanceInKm, GetPrices(hour));
+            return distanceInKm * GetPricePerKm(price);
         }
 
-        private decimal[] GetPrices(int hour)
-        {
-                    
-            return IsDayTime(hour) ? daytimePrices : nighttimePrices;
-        }
-
-        private bool IsDayTime(int hour) => 8 <= hour && hour < 21;
-
-        private decimal GetPricePerKm(int distanceInKm, decimal[] prices)
+        private decimal GetPricePerKm(Price price)
         {
             if (IsLongDistance(distanceInKm))
-                return prices[2];
+                return GetPrices(hour)[2];
             else if (IsMediumDistance(distanceInKm))
-                return prices[1];
-            return prices[0];
+                return GetPrices(hour)[1];
+            return GetPrices(hour)[0];
         }
+
+        private decimal[] GetPrices(int hour) => IsDayTime(hour) ? daytimePrices : nighttimePrices;
+
+        private bool IsDayTime(int hour) => 8 <= hour && hour < 21;        
 
         private bool IsLongDistance(int distanceInKm) => distanceInKm > 60;
 
