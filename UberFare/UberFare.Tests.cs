@@ -11,7 +11,7 @@ namespace UberFare
             int distanceInKm = 1;
             int hour = 8;
             int result = 5;
-            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
         }
         [Fact]
         public void DayTimeFareForMediumDistances()
@@ -19,7 +19,7 @@ namespace UberFare
             int distanceInKm = 21;
             int hour = 8;
             int result = 168;
-            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
         }
         [Fact]
         public void DayTimeFareForLongDistances()
@@ -27,7 +27,7 @@ namespace UberFare
             int distanceInKm = 100;
             int hour = 8;
             int result = 600;
-            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
         }
         [Fact]
         public void NightTimeFareForShortDistances()
@@ -35,7 +35,7 @@ namespace UberFare
             int distanceInKm = 1;
             int hour = 21;
             int result = 7;
-            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
         }
         [Fact]
         public void NightTimeFareForMediumDistances()
@@ -43,7 +43,7 @@ namespace UberFare
             int distanceInKm = 21;
             int hour = 21;
             int result = 210;
-            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
         }
         [Fact]
         public void NightTimeFareForLongDistances()
@@ -51,7 +51,7 @@ namespace UberFare
             int distanceInKm = 100;
             int hour = 21;
             int result = 800;
-            Assert.Equal(result, Program.CalculateUberFare(distanceInKm, hour));
+            Assert.Equal(result, Price.CalculateUberFare(distanceInKm, hour));
         }
     }
 }
