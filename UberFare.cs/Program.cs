@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace TaxiFare
+﻿namespace TaxiFare
 {
     public static class Program
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
         }
     }

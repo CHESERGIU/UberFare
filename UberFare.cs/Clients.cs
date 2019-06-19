@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TaxiFare
+﻿namespace TaxiFare
 {
     public class Client
     {
